@@ -5,4 +5,9 @@ CREATE TABLE tickets(
    item VARCHAR(50),
    description VARCHAR (255),
    date timestamp
-)
+);
+
+INSERT INTO tickets (item, description, date)
+VALUES ( 'Drill', 'Does Not Work', current_date);
+
+SELECT * FROM tickets;
