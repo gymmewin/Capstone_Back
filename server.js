@@ -12,7 +12,7 @@ app.use(cors())
 postgres.connect()
 
 //Controllers
-const ticketsController = require('./controller/tickets.js')
+const ticketsController = require('./controllers/tickets.js')
 app.use('/tickets', ticketsController)
 
 //Listener
