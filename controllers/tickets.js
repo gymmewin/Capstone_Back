@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 //Create Route
 router.post('/', (req, res) => {
-    postgres.query(`INSERT INTO tickets (item, description, date) VALUES ('${req.body.name}', ${req.body.description}, ${req.body.current_date})`, (err, results) => {
+    postgres.query(`INSERT INTO tickets (item, description, date) VALUES ('${req.body.item}', '${req.body.description}', ${req.body.current_date})`, (err, results) => {
         postgres.query('SELECT * FROM tickets ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
@@ -29,7 +29,7 @@ router.delete('/:id', (req, res) => {
 
 //Update Route
 router.put('/:id', (req, res) => {
-    postgres.query(`UPDATE tickets SET name = '${req.body.name}', description = ${req.body.description}, date = ${req.body.date} WHERE id = ${req.params.id}`, (err, results) => {
+    postgres.query(`UPDATE tickets SET item = '${req.body.item}', description = '${req.body.description}', date = ${req.body.date} WHERE id = ${req.params.id}`, (err, results) => {
         postgres.query('SELECT * FROM tickets ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
