@@ -2,7 +2,7 @@ const Client = require('pg').Client
 
 const dbConfig = {
    //5432 is Postgres default port
-	connectionString: 'postgresql://localhost:5432/tickets',
+	connectionString: 'postgresql://localhost:5432/capstone',
 }
 
 if(process.env.DATABASE_URL){
