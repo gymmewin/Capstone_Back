@@ -4,15 +4,19 @@ CREATE TABLE tickets(
    tickets_id SERIAL PRIMARY KEY,
    item VARCHAR(50),
    description VARCHAR (255),
-   date timestamp,
-   completed boolean,
+   dropoff_date date NOT NULL DEFAULT CURRENT_DATE,
+   status VARCHAR (50),
    notes VARCHAR (255)
 );
 
-INSERT INTO tickets (item, description, date)
+INSERT INTO tickets (item, description, dropoff_date)
 VALUES ( 'Drill', 'Does Not Work', current_date);
 
-INSERT INTO tickets (item, description, date)
+INSERT INTO tickets (item, description, dropoff_date)
 VALUES ( 'Lawnmower', 'Will not start', current_date);
+
+UPDATE tickets SET item = 'Drill', description ='Does Not Work', status ='Received', notes ='Needs new battery' WHERE tickets_id = 1;
+
+ALTER TABLE tickets ALTER COLUMN status TYPE VARCHAR(50);
 
 SELECT * FROM tickets;
