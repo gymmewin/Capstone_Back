@@ -30,26 +30,46 @@ user.post('/signup', (req, res) => {
 })
 
 //Login Route
+// user.put('/login', (req,res) => {
+//    postgres.query(`SELECT * FROM users WHERE email = '${req.body.email}';`, (error, foundUser) => {
+//       if(error){
+//          res.json('Sorry, but the Database ran into a problem. Please try again.')
+//       } else {
+//          if(foundUser.rows.length ===0){
+//             res.json({error:'This user was not found. Please try again.'})
+//          } else {
+//             bcrypt.compare(req.body.password, foundUser.rows[0].password, (error, results) => {
+//                if (error) {
+//                   res.json('Sorry, but the Database ran into a problem. Please try again.')
+//                } else {
+//                   if (!results){
+//                      res.json({error:'Password does not match. Please try again.'})
+//                   } else{
+//                      console.log(foundUser.rows[0].password);
+//                      res.json({user_name: foundUser.rows[0].user_name})
+//                   }
+//                }
+//             })
+//          }
+//       }
+//    })
+// })
+
 user.put('/login', (req,res) => {
    postgres.query(`SELECT * FROM users WHERE email = '${req.body.email}';`, (error, foundUser) => {
       if(error){
-         console.log('user not found');
          res.json('Sorry, but the Database ran into a problem. Please try again.')
       } else {
-         if(!foundUser){
-            res.json('This user was not found. Please try again.')
-         } else if (foundUser) {
-            bcrypt.compare(req.body.password, foundUser.rows[0].password, (error, matched) => {
-               if (error) {
-                  res.json('Password does not match. Please try again.')
-               } else {
-                  console.log(foundUser.rows[0].password);
-                  res.json({user_name: foundUser.rows[0].user_name})
-               }
-            })
-         } 
+         if(foundUser.rows.length === 0){
+            res.json({error:'This user was not found. Please try again.'})
+         } else if (bcrypt.compareSync(req.body.password, foundUser.rows[0].password)) {
+            res.json({user_name: foundUser.rows[0].user_name})
+            console.log(bcrypt.compareSync(req.body.password, foundUser.rows[0].password));
+         } else {
+            res.json({error:'Password does not match. Please try again.'})
+         }
       }
    })
-})
+});
 
 module.exports = user
