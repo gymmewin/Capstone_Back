@@ -13,7 +13,9 @@ postgres.connect()
 
 //Controllers
 const ticketsController = require('./controllers/tickets.js')
+const usersController = require('./controllers/users.js')
 app.use('/tickets', ticketsController)
+app.use('/users', usersController)
 
 //Listener
 app.listen(process.env.PORT || 3000, () => {
