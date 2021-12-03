@@ -38,7 +38,7 @@ user.put('/login', (req,res) => {
          if(foundUser.rows.length === 0){
             res.json({error:'This user was not found. Please try again.'})
          } else if (bcrypt.compareSync(req.body.password, foundUser.rows[0].password)) {
-            res.json({user_name: foundUser.rows[0].user_name})
+            res.json(foundUser.rows)
             console.log(bcrypt.compareSync(req.body.password, foundUser.rows[0].password));
          } else {
             res.json({error:'Password does not match. Please try again.'})
