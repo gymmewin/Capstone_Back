@@ -19,7 +19,8 @@ user.post('/signup', (req, res) => {
       bcrypt.hash(req.body.password, salt, (error, hash) => {
          postgres.query(`INSERT INTO users (user_name, email, password) VALUES ('${req.body.user_name}', '${req.body.email}', '${hash}');`, (error, createdUser) => {
             if (error) {
-               res.json('User Already Exist');
+               console.log('User Already Exist');
+               res.json({error:'User Already Exist'});
             } else {
                console.log('User Is Created');
                res.json(createdUser.rows)
