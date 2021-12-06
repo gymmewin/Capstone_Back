@@ -19,6 +19,8 @@ UPDATE tickets SET item = 'Drill', description ='Does Not Work', status ='Receiv
 
 ALTER TABLE tickets ALTER COLUMN status TYPE VARCHAR(50);
 
+ALTER TABLE tickets ADD COLUMN user_id INT;
+
 SELECT * FROM tickets;
 
 CREATE TABLE users(
