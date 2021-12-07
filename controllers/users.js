@@ -34,7 +34,7 @@ user.post('/signup', (req, res) => {
 user.put('/login', (req,res) => {
    postgres.query(`SELECT * FROM users WHERE email = '${req.body.email}';`, (error, foundUser) => {
       if(error){
-         res.json('Sorry, but the Database ran into a problem. Please try again.')
+         res.json({error:'Sorry, but the Database ran into a problem. Please try again.'})
       } else {
          if(foundUser.rows.length === 0){
             res.json({error:'This user was not found. Please try again.'})
