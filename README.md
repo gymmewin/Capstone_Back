@@ -26,7 +26,10 @@ On the first day, I spent the whole day researching what languages and technolog
 
 Issues Along The Way:
 ---------------------
-1. When I was testing my front end, I was having trouble getting my add route to post to the database. I could post using PSQL but not using the app itself.
+1. When I was testing my front end, I was having trouble getting my add route to post to the database. I could post using `PSQL` but not using the app itself. I could console log the item I was attempting to create and it would console log correctly but it still wasn't getting added to the database. After spending a couple hours working through this on my own, then with a classmate, I had to get **Brendan** to help me. My error was the way I was using the `timestamp` property in my schema. The way I was trying to call one of timestamp methods was incorrect. Instead of using the `current_date` method, **Brendan** showed me a different timestamp method, `NOW()` to correct my issue.
+2. Password encryption -  `compare` vs `compareSync` to get encrypted passwords to store properly in the database.
+3. Displaying error messages when creating new user.
+4. One-to-many relationships - Displaying only the items that belong to the current user.
 
 Unsolved Problems:
 ------------------
