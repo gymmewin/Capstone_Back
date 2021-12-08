@@ -14,6 +14,10 @@ Technologies Used:
 * Heroku
 * GitHub
 
+User Stories:
+---------------
+
+
 Approach Taken:
 ---------------
 On the first day, I spent the whole day researching what languages and technologies were popular in my area and did informational interviews with recent grads to help me brainstorm for ideas for my final build. Once I got my idea approved, this was my approach taken...
@@ -34,9 +38,9 @@ Issues Along The Way:
 Unsolved Problems:
 ------------------
 
-Future Improvements:
--------------------
 
 Link to my live site:
 ---------------------
 https://capstone-tickets-frontend.herokuapp.com/
+
+https://capstone-tickets-backend.herokuapp.com/

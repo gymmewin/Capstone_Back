@@ -2,6 +2,14 @@ const express = require('express');
 const router = express.Router();
 const postgres = require('../postgres.js');
 
+//Admin Route
+router.get('/admin', (req, res) => {
+    postgres.query(`SELECT * FROM tickets ORDER BY tickets_id ASC;`, (err, results) => {
+        res.json(results.rows)
+    });
+});
+
+
 //Read Route
 router.get('/:user_id', (req, res) => {
     postgres.query(`SELECT * FROM tickets WHERE user_id = ${req.params.user_id} ORDER BY tickets_id ASC;`, (err, results) => {
